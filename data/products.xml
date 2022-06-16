@@ -1,0 +1,19 @@
+<products>
+
+  <books>
+    <book author="Марк Твен" genre="Повесть" price="1000" amount="5">Приключения Тома Сойера</book>
+    <book author="Артур Конан Дойль" genre="Детектив" price="1100" amount="1">Воспоминания Шерлока Холмса</book>
+    <book author="Джордж Толкиен" genre="Фэнтези" price="1500" amount="7">Игра престолов</book>
+  </books>
+
+  <movies>
+    <movie director="Милош Форман" year="1975" price="350" amount="3">Пролетая над грездом кукушки</movie>
+    <movie director="Люк Бессон" year="2020" price="400" amount="4">Форсаж 99</movie>
+  </movies>
+
+  <disks>
+    <disk genre="Heavy Metal" price="500" amount="2">Judas Priest — Turbo</disk>
+    <disk genre="Heavy Metal" price="550" amount="3">Judas Priest — Ram It Down</disk>
+  </disks>
+
+</products>

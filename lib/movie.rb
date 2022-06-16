@@ -1,5 +1,5 @@
 class Movie < Product
-  attr_accessor :title, :year, :director
+  attr_reader :title, :year, :director
 
   def initialize(params)
     super
@@ -20,8 +20,31 @@ class Movie < Product
     )
   end
 
+  def self.from_xml(path)
+    begin
+      file = File.open(path, 'r:UTF-8')
+    rescue => e
+      puts e.message
+    end
+
+    doc = Document.new(file)
+
+    movies = []
+    doc.root.elements.each("movies/movie") do |el| 
+      movies << self.new(
+        title: el.text,
+        director: el.attributes["director"],
+        year: el.attributes["year"],
+        price: el.attributes["price"].to_i,
+        amount: el.attributes["amount"].to_i
+      )
+    end
+
+    movies
+  end
+
   def to_s
-    "Фильм «#{title}», #{year}, реж. #{director}, #{super}"
+    "Фильм «#{title}», реж. #{director} (#{year})#{super}"
   end
 
   def update(params)

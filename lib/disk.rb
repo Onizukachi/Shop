@@ -1,11 +1,10 @@
-class Book < Product
-  attr_reader :author, :genre, :title
+class Disk < Product
+  attr_reader :title, :genre
 
   def initialize(params)
     super
     @title = params[:title]
     @genre = params[:genre]
-    @author = params[:author]
   end
 
   def self.from_file(file_path)
@@ -14,9 +13,8 @@ class Book < Product
     self.new(
       title: lines[0],
       genre: lines[1],
-      author: lines[2],
-      price: lines[3].to_i,
-      amount: lines[4].to_i
+      price: lines[2].to_i,
+      amount: lines[3].to_i
     )
   end
 
@@ -29,22 +27,21 @@ class Book < Product
 
     doc = Document.new(file)
 
-    books = []
-    doc.root.elements.each("books/book") do |el| 
-      books << self.new(
+    disks = []
+    doc.root.elements.each("disks/disk") do |el| 
+      disks << self.new(
         title: el.text,
         genre: el.attributes["genre"],
-        author: el.attributes["author"],
         price: el.attributes["price"].to_i,
         amount: el.attributes["amount"].to_i
       )
     end
 
-    books
+    disks
   end
 
   def to_s
-    "Книга «#{title}», #{genre}, автор: #{author}#{super}"
+    "Диск #{title} (#{genre})#{super}"
   end
 
   def update(params)
@@ -52,6 +49,5 @@ class Book < Product
 
     @title = params[:title] if params[:title]
     @genre = params[:genre] if params[:genre]
-    @author = params[:author] if params[:author]
   end
 end

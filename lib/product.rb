@@ -1,5 +1,8 @@
+require 'rexml/document'
+
 class Product
   attr_accessor :price, :amount
+  include REXML
 
   def initialize(params)
     @price = params[:price]
@@ -7,7 +10,7 @@ class Product
   end
 
   def to_s
-    "#{@price} руб. (осталось #{@amount})"
+    " — #{@price} руб. [осталось: #{@amount}]"
   end
 
   def update(params)  
@@ -18,4 +21,9 @@ class Product
   def self.from_file(file_path)
     raise NotImplementedError
   end
+
+  def self.from_xml(file_path)
+    raise NotImplementedError
+  end
+
 end
