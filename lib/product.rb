@@ -25,5 +25,4 @@ class Product
   def self.from_xml(file_path)
     raise NotImplementedError
   end
-
 end

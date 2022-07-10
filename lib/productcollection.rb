@@ -1,6 +1,4 @@
 class ProductCollection
-  # Создадим константу со всеми возможными типами продуктов. Это ассоциативны # массив, где ключем является символ, а значением — другой ассоцаитивный
-  # массив с название папки (где лежат файлы этого типа) и ссылкой на класс.
   PRODUCT_TYPES = {
     film: {dir: 'films', class: Movie},
     book: {dir: 'books', class: Book},
@@ -83,5 +81,4 @@ class ProductCollection
       return 0
     end
   end
-
 end

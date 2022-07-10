@@ -14,7 +14,7 @@ class Movie < Product
     self.new(
       title: lines[0],
       director: lines[1],
-      year: lines[2].to_i,  # Конвертируем в число, чтобы превратить также nil в 0
+      year: lines[2].to_i,
       price: lines[3].to_i,
       amount: lines[4].to_i
     )
@@ -54,5 +54,4 @@ class Movie < Product
     @year = params[:year] if params[:year]
     @director = params[:director] if params[:director]
   end
-  
 end
